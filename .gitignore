@@ -14,11 +14,9 @@ venv/
 ENV/
 env/
 
-# Models
-models/*.onnx
-models/*.npz
-!models/*.md
-!models/*.json
+# Models (允许上传模型文件)
+# models/*.onnx
+# models/*.npz
 
 # Large files
 *.zip
