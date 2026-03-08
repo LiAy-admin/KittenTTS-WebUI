@@ -26,6 +26,22 @@ echo "  KittenTTS-WebUI 一键安装脚本"
 echo "=================================================="
 echo ""
 
+# 0. 检查是否在项目目录中，如果不是则克隆仓库
+if [ ! -f "install.sh" ] || [ ! -f "requirements.txt" ]; then
+    info "检测到远程安装，正在克隆仓库..."
+    if [ -d "KittenTTS-WebUI" ]; then
+        warn "KittenTTS-WebUI 目录已存在，正在更新..."
+        cd KittenTTS-WebUI
+        git pull
+    else
+        info "正在克隆仓库..."
+        git clone https://github.com/LiAy-admin/KittenTTS-WebUI.git
+        cd KittenTTS-WebUI
+    fi
+    success "仓库准备完成"
+    echo ""
+fi
+
 # 1. 检查 Python
 info "检查 Python 环境..."
 if ! command_exists python3; then
