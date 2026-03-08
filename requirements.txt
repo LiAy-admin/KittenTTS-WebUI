@@ -1,0 +1,18 @@
+num2words
+spacy
+espeakng_loader
+misaki[en]>=0.9.4
+onnxruntime
+soundfile
+numpy
+huggingface_hub
+
+# Web UI 依赖
+gradio>=6.0.0
+gradio-client>=2.0.0
+aiofiles>=22.0
+fastapi>=0.115.2
+uvicorn>=0.14.0
+pillow>=8.0
+pandas>=1.0
+python-multipart>=0.0.18
