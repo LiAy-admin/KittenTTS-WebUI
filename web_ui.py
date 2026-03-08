@@ -187,7 +187,7 @@ def generate_audio(text, model_name, voice, speed, use_gpu):
 
 def create_ui():
     """创建 Gradio 界面"""
-    with gr.Blocks(title="KittenTTS Web UI", theme=gr.themes.Soft()) as demo:
+    with gr.Blocks(title="KittenTTS Web UI") as demo:
         gr.Markdown(
             f"""
             # 🐱 KittenTTS Web UI
