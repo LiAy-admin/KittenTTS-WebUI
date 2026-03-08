@@ -121,6 +121,11 @@ def install_dependencies():
     )
     if success:
         print_success("依赖安装完成")
+        
+        # 修复 gradio-client bug
+        print_info("检查并修复 gradio-client 兼容性问题...")
+        run_command("source .venv/bin/activate && python fix_gradio_client.py", check=False)
+        
         return True
     else:
         print_error("依赖安装失败")

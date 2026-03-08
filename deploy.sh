@@ -108,6 +108,10 @@ install_dependencies() {
         source .venv/bin/activate
         uv pip install -r requirements.txt
         print_success "依赖安装完成"
+        
+        # 修复 gradio-client bug
+        print_info "检查并修复 gradio-client 兼容性问题..."
+        python fix_gradio_client.py 2>/dev/null || true
     else
         print_error "未找到 requirements.txt 文件"
         exit 1

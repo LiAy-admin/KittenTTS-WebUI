@@ -219,15 +219,13 @@ def create_ui():
                 model_dropdown = gr.Dropdown(
                     label="选择模型",
                     choices=list(MODELS.keys()),
-                    value="nano",
-                    info="选择不同的模型会影响音质和生成速度"
+                    value="nano"
                 )
                 
                 voice_dropdown = gr.Dropdown(
                     label="选择音色",
                     choices=['Bella', 'Jasper', 'Luna', 'Bruno', 'Rosie', 'Hugo', 'Kiki', 'Leo'],
-                    value='Bella',
-                    info="选择不同的声音风格"
+                    value='Bella'
                 )
                 
                 speed_slider = gr.Slider(
@@ -235,16 +233,14 @@ def create_ui():
                     minimum=0.5,
                     maximum=2.0,
                     step=0.1,
-                    value=1.0,
-                    info="调整语音速度，1.0 为正常速度"
+                    value=1.0
                 )
             
             with gr.Column(scale=1):
                 gpu_radio = gr.Radio(
                     label="推理模式",
                     choices=["CPU", "GPU"],
-                    value="CPU",
-                    info=f"当前: {gpu_status}"
+                    value="CPU"
                 )
                 
                 generate_btn = gr.Button("🎤 生成音频", variant="primary", size="lg")
@@ -266,7 +262,8 @@ def create_ui():
             if not text or not text.strip():
                 return None, "", "", "", "", ""
             
-            audio, elapsed, rt_factor, device, error = generate_audio(text, model_name, voice, speed, use_gpu)
+            use_gpu_bool = (use_gpu == "GPU")
+            audio, elapsed, rt_factor, device, error = generate_audio(text, model_name, voice, speed, use_gpu_bool)
             
             if error:
                 return None, f"❌ 错误: {error}", "", "", "", ""
@@ -371,8 +368,9 @@ if __name__ == "__main__":
     print()
     
     demo.launch(
-        server_name="0.0.0.0",
+        server_name="127.0.0.1",
         server_port=port,
         share=False,
-        show_error=True
+        show_error=True,
+        show_api=False
     )

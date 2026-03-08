@@ -60,6 +60,10 @@ source .venv/bin/activate
 uv pip install -r requirements.txt
 success "依赖安装完成"
 
+# 4.5. 修复 gradio-client bug (如果使用 Gradio 5.x)
+info "检查并修复 gradio-client 兼容性问题..."
+python fix_gradio_client.py 2>/dev/null || true
+
 # 5. 检查/下载模型
 info "检查模型文件..."
 MODELS_COUNT=$(find models -name "*.onnx" 2>/dev/null | wc -l)

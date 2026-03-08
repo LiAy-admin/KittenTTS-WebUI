@@ -8,9 +8,9 @@ numpy
 huggingface_hub
 
 # Web UI 依赖
-# Gradio 5.15.0 (修复 gradio_client TypeError bug)
-gradio==5.15.0
-# gradio-client 1.7.0 会自动安装
+# 使用 Gradio 3.50.2 (稳定版本，避免 gradio-client TypeError bug)
+gradio==3.50.2
+# gradio-client 0.6.1 会自动安装
 aiofiles>=22.0
 fastapi>=0.115.2
 uvicorn>=0.14.0

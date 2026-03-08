@@ -2,7 +2,7 @@
 
 基于 KittenTTS 的语音合成 Web 界面，支持 4 种模型、8 种音色。
 
-## 🚀 一键安装
+##  一键安装
 
 ```bash
 # 克隆项目
@@ -77,6 +77,21 @@ KittenTTS-WebUI/
 - UV 包管理器（自动安装）
 - 300MB+ 磁盘空间
 
-## 📄 许可证
+## � 已知问题与修复
+
+### Gradio 兼容性问题
+
+项目已自动处理 Gradio 库的兼容性问题：
+
+1. **使用稳定版本**：requirements.txt 中使用 Gradio 3.50.2（稳定版本）
+2. **自动修复脚本**：`fix_gradio_client.py` 会自动修复 gradio-client 库的已知 bug
+3. **集成到安装流程**：install.sh 和 deploy.sh 会在安装依赖后自动运行修复脚本
+
+如果遇到 `TypeError: argument of type 'bool' is not iterable` 错误，可以手动运行：
+```bash
+python fix_gradio_client.py
+```
+
+## �📄 许可证
 
 本项目遵循原 KittenTTS 项目的许可证。
