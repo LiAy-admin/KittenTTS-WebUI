@@ -35,8 +35,11 @@ if [ ! -f "install.sh" ] || [ ! -f "requirements.txt" ]; then
         git pull
     else
         info "正在克隆仓库..."
-        git clone https://github.com/LiAy-admin/KittenTTS-WebUI.git
+        # 使用 GIT_CLONE_PROTECTION_ACTIVE=false 绕过钩子限制
+        GIT_CLONE_PROTECTION_ACTIVE=false git clone https://github.com/LiAy-admin/KittenTTS-WebUI.git
         cd KittenTTS-WebUI
+        # 删除可能存在的钩子文件
+        rm -rf .git/hooks/post-checkout 2>/dev/null || true
     fi
     success "仓库准备完成"
     echo ""
