@@ -1,22 +1,25 @@
 #!/bin/bash
 
-# KittenTTS 快速启动脚本
+# KittenTTS-WebUI 启动脚本
 
-echo "🚀 启动 KittenTTS Web UI..."
-echo ""
+set -e
 
-# 检查虚拟环境
-if [ ! -d ".venv" ]; then
-    echo "❌ 虚拟环境不存在，请先运行: ./deploy.sh"
-    exit 1
-fi
+echo "=================================================="
+echo "  KittenTTS-WebUI 启动中..."
+echo "=================================================="
 
-# 检查模型
-if [ ! -d "models/nano" ]; then
-    echo "❌ 模型不存在，请先运行: ./deploy.sh"
+# 激活虚拟环境
+if [ -d ".venv" ]; then
+    source .venv/bin/activate
+else
+    echo "错误: 虚拟环境不存在，请先运行 ./install.sh"
     exit 1
 fi
 
 # 启动 Web UI
-source .venv/bin/activate
+echo ""
+echo "访问地址: http://localhost:7860"
+echo "按 Ctrl+C 停止服务"
+echo ""
+
 python web_ui.py
